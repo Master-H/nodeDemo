@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>我是静态页面</h1>
+  <script>
+    var A ={n:4399}
+    var B = function(){this.n=9999}//B拥有属性N
+    var C = function(){var n=9999}//C无属性n，只是N变量
+    B.prototype = A
+    C.prototype = A
+    var b = new B()//B中this指向b
+    var c = new C()//B中this指向b
+
+    A.n++;//n--4400
+    console.log(b.n)//9999 ：先查找b自己有属性n为9999
+    console.log(c.n)//4400 ：先查找c自己没有有属性n，找原型上的n此时为4400
+    
+
+  </script>
+</body>
+</html>
