@@ -41,8 +41,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">全部相册 <span class="sr-only">(current)</span></a></li>
-            <li><a href="/up">上传</a></li>
+            <li ><a href="/">全部相册 <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/up">上传</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -63,22 +63,33 @@
     
     <!-- 上传栏部分 -->
     <div class="container">
-    <!-- 路径导航 -->
-      <ol class="breadcrumb">
-        <li><a href="/">全部相册</a></li>
-        <li class="active"><%=albumname%></li>
-      </ol>
       <div class="row">
-        <% for(var i = 0;i<images.length;i++) { %>
-          <div class="col-xs-6 col-md-3">
-            <a href="#" class="thumbnail">
-            <!-- 注意这里的路径呀，要加载的图片，localhost：3000/images/folder.jpg才对 -->
-              <!-- <img src="../public/images/folder.jpg" alt="..."> -->
-              <img src="<%=images[i]%>" alt="...">
-            </a>
+        <form style="width: 40%" method='post' action='#' enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="exampleInputEmail1" >选择文件夹</label>
+            <!-- //文本域得有name才有意义 -->
+            <select class="form-control" name='wenjianjia'>
+              <% for(var i=0;i<albums.length;i++){%>
+                <option><%=albums[i]%></option>
+              <% }%>
+            </select>
           </div>
-       <% } %>
-      </div>
+          <div class="form-group">
+            <label for="exampleInputFile">选择图片</label>
+            <p>尺寸小于2M</p>
+            <input type="file" id="exampleInputFile" name='tupian'>
+          </div>
+         <!--  <div class="checkbox">s
+            <label>
+              <input type="checkbox"> Check me out
+            </label>
+          </div> -->
+          <button type="submit" class="btn btn-default">
+            
+            上传
+          </button>
+        </form>
+      </div>    
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -9,7 +9,7 @@ exports.getAllAlbums = function (callback) {
       return
     }
     var allAlbums = [];
-    //异步变同步，使用迭代器
+    // 异步变同步，使用迭代器
     (function iterator(i){
       if(i == files.length){
         //遍历结束输出allAlbums
@@ -32,11 +32,27 @@ exports.getAllAlbums = function (callback) {
         iterator(i+1)
       })
     })(0)
-    
-  })
+     //uploads/,/别少了
+  //   for(var i = 0; i<files.length;i++){
+  //     fs.statSync("./uploads/" + files[i],(err,stats)=>{
+  //       if(err){
+  //         callback("找不到文件"+files[i],null)
+  //       }
+  //       if(stats.isDirectory()){
+  //         allAlbums.push(files[i])
+  //       }
+  //       //记得调用，不然allAlbums为空
+  //       // iterator(i+1)
+  //     })
+
+  //   }
+  // return allAlbums
+  // })
+
   //为假的
   // return ['小猫猫猫','小狗','小猪']
   //通过文件名，得到所有图片 
+  })
 }
 exports.getAllImagesByAlbumName = function(albumName,callback){
     fs.readdir("./uploads/" + albumName,function(err,files){

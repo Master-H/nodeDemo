@@ -20,6 +20,8 @@ app.get("/admin",(req,res)=>{
   res.send("admin")
 })
 app.get("/:albumName",router.showAlbum)
+app.get("/up",router.showUp)
+app.post("/up",router.doPost)
 //最后的中间件404
 app.use(function(req,res){
   res.render("err")
